@@ -61,22 +61,22 @@ Transcript:
 """
 """
 
-        openai_response = requests.post(
-            "https://api.openai.com/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {OPENAI_API_KEY}",
-                "Content-Type": "application/json"
-            },
-            json={
-                "model": "gpt-4",
-                "messages": [{"role": "user", "content": prompt}],
-                "temperature": 0.7
-            }
-        )
+                openai_response = requests.post(
+                    "https://api.openai.com/v1/chat/completions",
+                    headers={
+                        "Authorization": f"Bearer {OPENAI_API_KEY}",
+                        "Content-Type": "application/json"
+                    },
+                    json={
+                        "model": "gpt-4",
+                        "messages": [{"role": "user", "content": prompt}],
+                        "temperature": 0.7
+                    }
+                )
 
-        if openai_response.status_code != 200:
-            st.error("OpenAI analysis failed.")
-        else:
-            analysis = openai_response.json()["choices"][0]["message"]["content"]
-            st.markdown("### 📝 Feedback")
-            st.markdown(analysis)
+                if openai_response.status_code != 200:
+                    st.error("OpenAI analysis failed.")
+                else:
+                    analysis = openai_response.json()["choices"][0]["message"]["content"]
+                    st.markdown("### 📝 Feedback")
+                    st.markdown(analysis)
